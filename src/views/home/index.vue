@@ -5,7 +5,7 @@
 
 <template>
   <div id="Home">
-      PC后端管理系统
+      移动端模板
   </div>
 </template>
 <script>
