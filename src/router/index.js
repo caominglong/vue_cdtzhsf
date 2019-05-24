@@ -10,6 +10,6 @@ export default new Router({
   routes: [{
     path: '/',
     name: 'vue-pc',
-    component: (resolve) => require(['@/views/home/index'], resolve)
+    component: (resolve) => require(['@/components/HelloWorld'], resolve)
   }]
 }) 

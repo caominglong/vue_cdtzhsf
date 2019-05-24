@@ -1,25 +1,28 @@
+// The Vue build version to load with the `import` command
+// (runtime-only or standalone) has been set in webpack.base.conf with an alias.
 import Vue from 'vue'
-import './plugins/axios'
-import App from './App.vue'
-import router from './router/index'
-import store from './store/index'
-import common from '@/utils/common-for-vue.js';
-import 'styles/index.scss'
-import * as filters from './filters' // 全局vue filter
+import FastClick from 'fastclick'
+import VueRouter from 'vue-router'
+import App from './App'
+import Home from './components/HelloFromVux'
 
-Vue.prototype.common = common;
-Vue.config.productionTip = false
+Vue.use(VueRouter)
 
-// 配置全局过滤器
-Object.keys(filters).forEach(key => {
-  Vue.filter(key, filters[key])
+const routes = [{
+  path: '/',
+  component: Home
+}]
+
+const router = new VueRouter({
+  routes
 })
 
+FastClick.attach(document.body)
 
 Vue.config.productionTip = false
 
+/* eslint-disable no-new */
 new Vue({
   router,
-  store,
   render: h => h(App)
-}).$mount('#app')
+}).$mount('#app-box')
