@@ -1,0 +1,21 @@
+/* 覆盖的样式 */
+.vux-header {
+  z-index: 9;
+}
+.weui-textarea {
+  font-size: 0.32rem;
+  background-color: #fff;
+  border: 0px;
+}
+.weui-input {
+  font-size: 0.32rem;
+}
+.weui-label {
+  font-size: 0.32rem;
+}
+.weui-select {
+  font-size: 0.32rem;
+}
+.weui-btn {
+  font-size: 0.32rem;
+}

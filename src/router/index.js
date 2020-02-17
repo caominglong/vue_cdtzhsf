@@ -9,7 +9,11 @@ export default new Router({
   mode: 'hash',
   routes: [{
     path: '/',
-    name: 'vue-pc',
-    component: (resolve) => require(['@/components/HelloWorld'], resolve)
+    name: 'demo',
+    component: (resolve) => require(['@/views/demo/index'], resolve)
+  }, {
+    path: '/DemoSearch',
+    name: 'DemoSearch',
+    component: (resolve) => require(['@/views/demo/DemoSearch'], resolve)
   }]
 }) 

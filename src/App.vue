@@ -6,7 +6,13 @@
 
 <script>
 export default {
-  name: 'app'
+  name: 'app',
+  mounted () {
+    // 关闭加载动画
+    setTimeout(() => {
+      document.getElementById("loader-wrapper").style.display = "none";
+    }, 1000)
+  }
 }
 </script>
 
@@ -14,6 +20,16 @@ export default {
 @import '~vux/src/styles/reset.less';
 
 body {
-  background-color: #fbf9fe;
+  background-color: #efefef;
+  height: 100vh;
+  overflow: hidden;
+  #app {
+    background-color: #efefef;
+    height: 100vh;
+    overflow: hidden;
+    .minHight {
+      height: 100vh;
+    }
+  }
 }
 </style>

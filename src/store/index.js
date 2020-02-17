@@ -1,21 +1,19 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-import createPersistedState from 'vuex-persistedstate'
 
 Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
-    searchForm: {}, // 默认搜索内容
+    StoreSearchForm: {} // 搜索内容
   },
-  plugins: [createPersistedState()],
   getters: {
-    searchForm: state => state.searchForm 
+    StoreSearchForm: state => state.StoreSearchForm,
   },
   mutations: {
-    SET_searchForm: (state, searchForm) => {
-      state.searchForm = searchForm
-    }
+    SET_StoreSearchForm: (state, StoreSearchForm) => {
+      state.StoreSearchForm = StoreSearchForm
+    },
   },
   actions: {
 

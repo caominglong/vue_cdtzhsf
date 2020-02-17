@@ -35,17 +35,16 @@ export const removeStore = name => {
  *   arr是操作的数组，id是要删除的元素，返回最新的数组
  */
 export const removeArray = (arr, func) => {
-  return Array.isArray(arr)
-    ? arr.filter(func).reduce((acc, val) => {
-        arr.splice(arr.indexOf(val), 1);
-        return acc.concat(val);
-      }, [])
-    : [];
+  return Array.isArray(arr) ?
+    arr.filter(func).reduce((acc, val) => {
+      arr.splice(arr.indexOf(val), 1);
+      return acc.concat(val);
+    }, []) : [];
 };
 
 export const removeDuplicate = (array, key) => {
   let hash = {};
-  array = array.reduce(function(arr, current) {
+  array = array.reduce(function (arr, current) {
     hash[current[key]] ? "" : (hash[current[key]] = true && arr.push(current));
     return arr;
   }, []);
@@ -117,111 +116,6 @@ export const difference = (a, b) => {
   return a.filter(x => !s.has(x));
 };
 
-// 将一个sheet转成最终的excel文件的blob对象，然后利用URL.createObjectURL下载
-export const sheet2blob = (sheet, sheetName) => {
-  sheetName = sheetName || "sheet1";
-  let workbook = {
-    SheetNames: [sheetName],
-    Sheets: {}
-  };
-  workbook.Sheets[sheetName] = sheet;
-  // 生成excel的配置项
-  let wopts = {
-    bookType: "xls", // 要生成的文件类型
-    bookSST: false, // 是否生成Shared String Table，官方解释是，如果开启生成速度会下降，但在低版本IOS设备上有更好的兼容性
-    type: "binary"
-  };
-  let wbout = XLSX.write(workbook, wopts);
-  let blob = new Blob([s2ab(wbout)], {
-    type: "application/octet-stream"
-  });
-  // 字符串转ArrayBuffer
-  function s2ab(s) {
-    let buf = new ArrayBuffer(s.length);
-    let view = new Uint8Array(buf);
-    for (let i = 0; i != s.length; ++i) view[i] = s.charCodeAt(i) & 0xff;
-    return buf;
-  }
-  return blob;
-};
-
-/**
- * 通用的打开下载对话框方法，没有测试过具体兼容性
- * @param url 下载地址，也可以是一个blob对象，必选
- * @param saveName 保存文件名，可选
- */
-export const openDownloadDialog = (url, saveName) => {
-  if (typeof url == "object" && url instanceof Blob) {
-    url = URL.createObjectURL(url); // 创建blob地址
-  }
-  var aLink = document.createElement("a");
-  aLink.href = url;
-  aLink.download = saveName || ""; // HTML5新增的属性，指定保存文件名，可以不要后缀，注意，file:///模式下不会生效
-  var event;
-  if (window.MouseEvent) event = new MouseEvent("click");
-  else {
-    event = document.createEvent("MouseEvents");
-    event.initMouseEvent(
-      "click",
-      true,
-      false,
-      window,
-      0,
-      0,
-      0,
-      0,
-      0,
-      false,
-      false,
-      false,
-      false,
-      0,
-      null
-    );
-  }
-  aLink.dispatchEvent(event);
-};
-
-/**
- * 下载excel - xls格式
- * @param {*} aoa [['表头1', '表头2'， ‘表头3’], ['第二列1', '第二列2'， '第二列3'], ['第三列1', '第三列2'， ’第三列3‘]]
- * @param {*} title  标题
- */
-export const tableToXls = (aoa, title) => {
-  let sheet = XLSX.utils.aoa_to_sheet(aoa);
-  openDownloadDialog(sheet2blob(sheet), `${title}.xls`);
-};
-
-/**
- * 树形数据转换
- * @param {*} data
- * @param {*} id
- * @param {*} pid
- */
-export function treeDataTranslate(data, id = "id", pid = "parentId") {
-  console.log("data", data);
-  var res = [];
-  var temp = {};
-  for (var i = 0; i < data.length; i++) {
-    temp[data[i][id]] = data[i];
-  }
-  for (var k = 0; k < data.length; k++) {
-    if (temp[data[k][pid]] && data[k][id] !== data[k][pid]) {
-      if (!temp[data[k][pid]]["children"]) {
-        temp[data[k][pid]]["children"] = [];
-      }
-      if (!temp[data[k][pid]]["_level"]) {
-        temp[data[k][pid]]["_level"] = 1;
-      }
-      data[k]["_level"] = temp[data[k][pid]]._level + 1;
-      temp[data[k][pid]]["children"].push(data[k]);
-    } else {
-      res.push(data[k]);
-    }
-  }
-  return res;
-}
-
 /**
  *  提取汉字
  */
@@ -233,4 +127,25 @@ export function getChinese(str) {
   } else {
     return "";
   }
+}
+
+/**
+ * 数组 去重 去空值
+ * @param {*} arr 
+ */
+export function trimSetArr(arr) {
+  console.log('arr', arr)
+  let _arr = [...new Set(arr)] // 去重
+  return _arr.filter(s => { // 去空
+    return s && s.trim()
+  })
+}
+
+/**
+ * 判断时间是否结束, 返回true 已结束， false 未结束
+ * @param {*} time 
+ */
+export function compareTime(time) {
+  console.log('time', time);
+  return new Date().getTime() - new Date(time.replace(new RegExp("-", "gm"), "/")).getTime() > 0
 }

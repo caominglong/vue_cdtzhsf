@@ -1,0 +1,54 @@
+{
+  "_from": "vueg",
+  "_id": "vueg@1.4.5",
+  "_inBundle": false,
+  "_integrity": "sha512-Q+UTTLPZ1yIZp4zQPNBQVMdKTsgINfArzQDVGpiM7Ga02WZ4kkND14v0OfW+BEYV6pd8d8WdT6SILPBCzF3F8A==",
+  "_location": "/vueg",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "tag",
+    "registry": true,
+    "raw": "vueg",
+    "name": "vueg",
+    "escapedName": "vueg",
+    "rawSpec": "",
+    "saveSpec": null,
+    "fetchSpec": "latest"
+  },
+  "_requiredBy": [
+    "#USER",
+    "/"
+  ],
+  "_resolved": "https://registry.npmjs.org/vueg/-/vueg-1.4.5.tgz",
+  "_shasum": "52d54e11ecde1e696368a247a4aa09d836ebfa84",
+  "_spec": "vueg",
+  "_where": "/Users/suzhiming/trustway/pinghu-dingtalk",
+  "author": {
+    "name": "jawei"
+  },
+  "bugs": {
+    "url": "https://github.com/jaweii/vueg/issues"
+  },
+  "bundleDependencies": false,
+  "dependencies": {
+    "animate.css": "^3.7.0"
+  },
+  "deprecated": false,
+  "description": "[Vue] 页面级的转场动画插件",
+  "homepage": "https://github.com/jaweii/vueg#readme",
+  "keywords": [
+    "vue",
+    "transition"
+  ],
+  "license": "ISC",
+  "main": "index.js",
+  "name": "vueg",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jaweii/vueg.git"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "version": "1.4.5"
+}

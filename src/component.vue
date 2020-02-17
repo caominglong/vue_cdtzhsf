@@ -1,6 +1,3 @@
-<style lang="scss">
-</style>
-
 <template>
   <section></section>
 </template>
@@ -17,3 +14,5 @@ export default {
   methods: {},
 };
 </script>
+<style lang="less">
+</style>
