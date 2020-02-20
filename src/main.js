@@ -41,6 +41,7 @@ Vue.config.productionTip = false
 /* eslint-disable no-new */
 new Vue({
   router,
+  //全局注入store
   store,
   render: h => h(App)
 }).$mount('#app-box')

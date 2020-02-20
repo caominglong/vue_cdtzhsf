@@ -16,10 +16,12 @@ export function demoService (params) {
             time: new Date()
           })
         }
+        //接口成功返回
         resolve({
           data: data
         })
       } else {
+        //接口失败返回
         reject()
       }
   })
@@ -34,4 +36,28 @@ export function fetchData(params) {
     url: `/xxxxxx`,
     method: 'get'
   })
+}
+
+/**
+ * 接口调用
+ * @param {*} params
+ */
+export function queryPayInfo(params) {
+  alert(1);
+  // return request({
+  //   url: `/xxxxxx`,
+  //   method: 'get'
+  // })
+  return new Promise((resolve, reject) => {
+    if (true) {
+      let data = []
+      //接口成功返回
+      resolve({
+        data: data
+      })
+    } else {
+      //接口失败返回
+      reject()
+    }
+})
 }

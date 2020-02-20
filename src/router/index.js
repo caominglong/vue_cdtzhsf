@@ -10,10 +10,15 @@ export default new Router({
   routes: [{
     path: '/',
     name: 'demo',
-    component: (resolve) => require(['@/views/demo/index'], resolve)
+    component: (resolve) => require(['@/views/onlinePay/queryPayList_GF'], resolve)
   }, {
     path: '/DemoSearch',
     name: 'DemoSearch',
     component: (resolve) => require(['@/views/demo/DemoSearch'], resolve)
-  }]
+  }, {
+    path: '/payList_GF',
+    name: 'payList_GF',
+    component: (resolve) => require(['@/views/onlinePay/payList_GF'], resolve)
+  }
+]
 }) 
