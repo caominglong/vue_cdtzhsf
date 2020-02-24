@@ -43,7 +43,6 @@ export function fetchData(params) {
  * @param {*} params
  */
 export function queryPayInfo(params) {
-  alert(1);
   // return request({
   //   url: `/xxxxxx`,
   //   method: 'get'
@@ -60,4 +59,16 @@ export function queryPayInfo(params) {
       reject()
     }
 })
+}
+
+/**
+ * 接口调用,获取配置信息
+ * @param {*} params
+ */
+export function queryInfoFromSys(params) {
+  return request({
+    url: `http://localhost:9181/tyzf_zhsf/sysCode/getSysCodeByType`,
+    method: 'get',
+    params : params
+  })
 }

@@ -4,24 +4,37 @@
     <!-- x-header为vux的组件，left-options.showBack为是否显示返回文字 -->
     <x-header :left-options="{showBack: false}">规费详情
     </x-header>
-    <div style="width : 100%;height:100px;background:gray">
-        <div>收费大类：</div>
-        <div>流水号：</div>
+    <div style="width : 100%;height:100px;">
+        <x-table>
+        <thead>
+          <tr>
+            <th>Product</th>
+            <th>Price</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Apple</td>
+            <td>$1.25</td>
+          </tr>
+        </tbody>
+      </x-table>
     </div>
     <!-- 缴费信息列表 -->
     <box gap="10px 10px">
-        
         <flexbox v-for="item in items">
             <flexbox-item :span="2" style="margin-left:0">
-                <checklist title="" :options="commonList" ></checklist>
+              <input type="checkbox" name="checkbox1" value="可选"/>
+              <input type="checkbox" name="checkbox1" value="必选"/>
+                <!-- <checklist title="" :options="commonList" ></checklist> -->
             </flexbox-item>
-            <flexbox-item style="margin-left:0">
+            <!-- <flexbox-item style="margin-left:0">
                 <div>收费名称：{{item.sfmc}}</div>
                 <div>收费金额：{{item.je}}</div>
             </flexbox-item>
             <flexbox-item :span="2" style="margin-left:0">
                 <span>可选</span>
-            </flexbox-item>
+            </flexbox-item> -->
         </flexbox>
     </box>
 
@@ -41,7 +54,7 @@
   </div>
 </template>
 <script>
-import { XHeader,Selector,Group,Box,Flexbox,FlexboxItem,XButton,XInput,Checklist} from "vux";
+import { XHeader,Selector,Group,Box,Flexbox,FlexboxItem,XButton,XInput,Checklist,XTable} from "vux";
 import {queryPayInfo} from '@/api/service';
 export default { 
   name: "Demo",
@@ -56,11 +69,13 @@ export default {
     FlexboxItem,
     XButton,
     XInput,
-    Checklist
+    Checklist,
+    XTable
   },
   mounted:function(){
       var params = this.$route.params;
       console.log(params);
+      
       queryPayInfo(params).then(res => { 
         console.log(res); 
       });
